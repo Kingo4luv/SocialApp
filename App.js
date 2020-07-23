@@ -1,16 +1,11 @@
-import {
-  createAppContainer,
-  createSwitchNavigator
-} from 'react-navigation'
-import {
-  createStackNavigator
-} from 'react-navigation-stack'
-import LoadingScreen from './screens/LoadingScreen';
-import LoginScreen from './screens/LoginScreen';
-import RegisterScreen from './screens/RegisterScreen';
-import HomeScreen from './screens/HomeScreen';
+import { createAppContainer, createSwitchNavigator } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import LoadingScreen from "./screens/LoadingScreen";
+import LoginScreen from "./screens/LoginScreen";
+import RegisterScreen from "./screens/RegisterScreen";
+import HomeScreen from "./screens/HomeScreen";
 
-import * as firebase from 'firebase';
+import * as firebase from "firebase";
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
@@ -20,26 +15,30 @@ var firebaseConfig = {
   projectId: "socialapp-d5003",
   storageBucket: "socialapp-d5003.appspot.com",
   messagingSenderId: "870003233000",
-  appId: "1:870003233000:web:6368479a6c4589ab99b95d"
+  appId: "1:870003233000:web:6368479a6c4589ab99b95d",
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
 const AppStack = createStackNavigator({
-  Home: HomeScreen
-})
+  Home: HomeScreen,
+});
 
 const AuthStack = createStackNavigator({
   Login: LoginScreen,
-  Register: RegisterScreen
-})
+  Register: RegisterScreen,
+});
 
 export default createAppContainer(
-  createStackNavigator({
-    Loading: LoadingScreen,
-    App: AppStack,
-    Auth: AuthStack
-  }, {
-    initialRouteName: "Loading"
-  })
-)
+  createStackNavigator(
+    {
+      Loading: LoadingScreen,
+      App: AppStack,
+      Auth: AuthStack,
+    },
+    {
+      initialRouteName: "Loading",
+      headerMode: "none",
+    }
+  )
+);
