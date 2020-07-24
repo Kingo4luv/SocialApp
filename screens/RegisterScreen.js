@@ -13,7 +13,7 @@ import * as firebase from "firebase";
 
 export default class RegisterScreen extends Component {
   static navigationOptions = {
-    header: null,
+    headerShown: false,
   };
   state = {
     name: "",
